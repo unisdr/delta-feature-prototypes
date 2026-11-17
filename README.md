@@ -16,7 +16,7 @@ Each feature prototype is served from its feature directory using `index.html` a
 
 Expected pattern:
 
-- https://unisdr.github.io/delta-feature-prototypes/features/<feature-name>/
+- https://unisdr.github.io/delta-feature-prototypes/features/[feature-name]/
 
 Example:
 
