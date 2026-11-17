@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Management Prototype</title>
+    <style>
+      :root {
+        --bg: #f5f7fb;
+        --surface: #ffffff;
+        --surface-muted: #eef3fa;
+        --primary: #1f4e79;
+        --primary-strong: #173d62;
+        --accent: #4f9cf9;
+        --accent-soft: #dfeeff;
+        --text: #1a2433;
+        --text-soft: #59657a;
+        --border: #dfe6f1;
+        --success: #2f9e72;
+        --warning: #d97706;
+        --danger: #c92a2a;
+        --shadow: 0 10px 30px rgba(23, 61, 98, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      .page {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 16px 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: white;
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+      }
+
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .search {
+        min-width: 280px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--surface-muted);
+        color: var(--text);
+      }
+
+      .button {
+        border: none;
+        padding: 10px 16px;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .button.primary {
+        background: var(--primary);
+        color: white;
+      }
+
+      .button.secondary {
+        background: var(--surface-muted);
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(180px, 1fr));
+        gap: 18px;
+        margin-top: 24px;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+      }
+
+      .stat {
+        padding: 18px 20px;
+      }
+
+      .stat-label {
+        color: var(--text-soft);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .stat-value {
+        margin-top: 12px;
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      .stat-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 8px;
+        font-size: 13px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .pill.success {
+        background: rgba(47, 158, 114, 0.12);
+        color: var(--success);
+      }
+
+      .pill.warning {
+        background: rgba(217, 119, 6, 0.12);
+        color: var(--warning);
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 24px;
+        margin-top: 24px;
+      }
+
+      .panel {
+        padding: 20px;
+      }
+
+      .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .panel-title {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .table-wrap {
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+      }
+
+      th, td {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        font-size: 14px;
+      }
+
+      th {
+        background: var(--surface-muted);
+        color: var(--text-soft);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      tr:last-child td { border-bottom: none; }
+
+      .status {
+        display: inline-flex;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .status.live { background: rgba(47, 158, 114, 0.12); color: var(--success); }
+      .status.review { background: rgba(79, 156, 249, 0.12); color: var(--primary); }
+      .status.draft { background: rgba(217, 119, 6, 0.12); color: var(--warning); }
+
+      .event-detail {
+        padding: 22px;
+      }
+
+      .eyebrow {
+        color: var(--text-soft);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        font-size: 28px;
+      }
+
+      .meta-line {
+        color: var(--text-soft);
+        margin-bottom: 18px;
+      }
+
+      .detail-section {
+        margin-top: 20px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border);
+      }
+
+      .detail-section h3 {
+        margin: 0 0 10px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-soft);
+      }
+
+      .info-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .info-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .info-list li:last-child { border-bottom: none; }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .stat-grid {
+          grid-template-columns: repeat(2, minmax(180px, 1fr));
+        }
+      }
+
+      @media (max-width: 560px) {
+        .topbar,
+        .toolbar,
+        .panel-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .search {
+          min-width: auto;
+          width: 100%;
+        }
+
+        .stat-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">D</div>
+          <div>
+            <div>DELTA</div>
+            <small>Event Management</small>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <input class="search" type="search" value="Search events" aria-label="Search events" />
+          <button class="button secondary" type="button">Filters</button>
+          <button class="button primary" type="button">New event</button>
+        </div>
+      </header>
+
+      <section class="stat-grid" aria-label="Summary metrics">
+        <article class="card stat">
+          <div class="stat-label">Active events</div>
+          <div class="stat-value">128</div>
+          <div class="stat-meta">
+            <span>+12% this month</span>
+            <span class="pill success">On track</span>
+          </div>
+        </article>
+
+        <article class="card stat">
+          <div class="stat-label">Drafts</div>
+          <div class="stat-value">19</div>
+          <div class="stat-meta">
+            <span>5 need review</span>
+            <span class="pill warning">Needs action</span>
+          </div>
+        </article>
+
+        <article class="card stat">
+          <div class="stat-label">Participants</div>
+          <div class="stat-value">4,280</div>
+          <div class="stat-meta">
+            <span>+320 this week</span>
+            <span class="pill success">Stable</span>
+          </div>
+        </article>
+
+        <article class="card stat">
+          <div class="stat-label">Alerts</div>
+          <div class="stat-value">7</div>
+          <div class="stat-meta">
+            <span>2 high priority</span>
+            <span class="pill warning">Monitor</span>
+          </div>
+        </article>
+      </section>
+
+      <main class="layout">
+        <section class="card panel">
+          <div class="panel-header">
+            <div class="panel-title">Upcoming events</div>
+            <button class="button secondary" type="button">Export</button>
+          </div>
+
+          <div class="table-wrap">
+            <table aria-label="Event list">
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>Location</th>
+                  <th>Owner</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Regional resilience forum</td>
+                  <td>Geneva</td>
+                  <td>Anna Mills</td>
+                  <td><span class="status live">Live</span></td>
+                  <td>12 Nov 2026</td>
+                </tr>
+                <tr>
+                  <td>Urban risk workshop</td>
+                  <td>Tokyo</td>
+                  <td>Michael Chen</td>
+                  <td><span class="status review">Review</span></td>
+                  <td>18 Nov 2026</td>
+                </tr>
+                <tr>
+                  <td>Data sharing summit</td>
+                  <td>New York</td>
+                  <td>Priya Hassan</td>
+                  <td><span class="status draft">Draft</span></td>
+                  <td>23 Nov 2026</td>
+                </tr>
+                <tr>
+                  <td>Climate adaptation briefing</td>
+                  <td>Lisbon</td>
+                  <td>Lucas Moreno</td>
+                  <td><span class="status live">Live</span></td>
+                  <td>01 Dec 2026</td>
+                </tr>
+                <tr>
+                  <td>Preparedness planning forum</td>
+                  <td>Abu Dhabi</td>
+                  <td>Samuel Okafor</td>
+                  <td><span class="status review">Review</span></td>
+                  <td>08 Dec 2026</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside class="card event-detail" aria-label="Selected event details">
+          <div class="eyebrow">Selected event</div>
+          <h2>Regional resilience forum</h2>
+          <div class="meta-line">Geneva • 12 Nov 2026 • 8:30 AM</div>
+
+          <div class="detail-section">
+            <h3>Overview</h3>
+            <p>
+              A cross-sector platform for regional emergency managers, humanitarian partners,
+              and technical experts to align on preparedness and early warning actions.
+            </p>
+          </div>
+
+          <div class="detail-section">
+            <h3>Key details</h3>
+            <ul class="info-list">
+              <li><span>Owner</span><strong>Anna Mills</strong></li>
+              <li><span>Registration</span><strong>420 / 500</strong></li>
+              <li><span>Venue</span><strong>Palais des Nations</strong></li>
+              <li><span>Format</span><strong>Hybrid</strong></li>
+            </ul>
+          </div>
+
+          <div class="actions">
+            <button class="button primary" type="button">Open event</button>
+            <button class="button secondary" type="button">Edit</button>
+          </div>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>
