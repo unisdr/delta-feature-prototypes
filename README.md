@@ -1,4 +1,4 @@
-# Delta Feature Prototypes
+# DELTA Feature Prototypes
 
 This repository hosts static UI prototypes for the DELTA Design System, aligned to the principles and design language developed in the main project:
 
