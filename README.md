@@ -52,7 +52,10 @@ Each feature folder can include:
 
 - `index.html` — the main prototype entry page for GitHub Pages access
 - `README.md` — feature purpose, scope, and user context
+- `requirements.md` — implementation-ready functional requirements, business rules, calculations, validation logic, and acceptance criteria
 - `notes.md` — design decisions, interaction decisions, rationale, and open questions
+
+`requirements.md` should be treated as the handoff artifact for development. It is the source of truth for business rules and computation logic, while `index.html` remains a design prototype and `notes.md` remains a design rationale document.
 
 ### Recommended content for `notes.md`
 
@@ -111,8 +114,9 @@ To add a new prototype:
 1. Create a new directory under `features/`.
 2. Add an `index.html` page for the prototype.
 3. Add a `README.md` with problem statement, user need, and scope.
-4. Add `notes.md` with decisions, rationale, and open questions.
-5. Keep asset links relative so the page renders correctly on GitHub Pages.
+4. Add a `requirements.md` with functional requirements, business rules, calculations, validation logic, and acceptance criteria.
+5. Add `notes.md` with decisions, rationale, and open questions.
+6. Keep asset links relative so the page renders correctly on GitHub Pages.
 
 Example structure:
 
@@ -120,6 +124,7 @@ Example structure:
 features/
   alert-management/
     README.md
+    requirements.md
     index.html
     notes.md
 ```
