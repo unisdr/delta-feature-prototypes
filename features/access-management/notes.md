@@ -32,3 +32,8 @@ owner: design
 
 - Should an admin be able to change their own role?
 - Should deleting a user with records need a transfer of ownership first?
+- Should the user count ("Currently there are N users") stay?
+
+## Changelog
+
+- 2026-11-18: First version of the prototype page.

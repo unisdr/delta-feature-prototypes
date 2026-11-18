@@ -14,9 +14,9 @@ Let administrators invite people to a site and set what they can do on it.
 
 ## Scope
 
-- User list with search by name, email or organization and a role filter.
+- User list with search and a role filter.
 - Sorting on name, status, organization, role and date added. Sorting applies to the whole list.
-- Pagination: 25, 50 or 100 rows per page, default 25.
+- Pagination with a rows per page choice.
 - Invite user, edit user and delete user as dialogs on the list page.
 - Resend invitation for users whose invitation is pending.
 
@@ -25,6 +25,21 @@ Let administrators invite people to a site and set what they can do on it.
 - Real data and sign-in. All users and organizations are example data.
 - Permissions per feature beyond the five roles.
 
+## Changes from the current version
+
+Compared with the current Access management page in DELTA.
+
+| Area | Current | Prototype | Reason |
+|---|---|---|---|
+| Finding users | Organization filter (typed name) and role filter | One search box for name, email and organization, plus the role filter | Users are found by name or email more often than by organization |
+| Sorting | None | Click a column header to sort | Needed to find the newest or pending users |
+| Rows per page | 10, 20, 30, 40, 50 | 25, 50, 100, default 25 | Design system standard for tables |
+| Status | Status column plus a "Status legend" section | Dot plus text in the status column, no legend | The text carries the meaning, so no legend is needed |
+| User count | "Currently there are N users in the system." | Not shown | To be decided |
+| Role names | Data Viewer, Data Collector, Data Validator | Data viewer, Data collector, Data validator | Sentence case |
+
+The columns, the five roles, resend invitation and the add, edit and delete actions are the same as in the current version.
+
 ## Checks
 
-- axe-core, WCAG 2.0, 2.1 and 2.2 A and AA rules: no violations.
+- Automatic accessibility check (axe-core, WCAG 2.0, 2.1 and 2.2 A and AA rules): no problems found.
