@@ -37,3 +37,4 @@ owner: design
 ## Changelog
 
 - 2026-11-18: First version of the prototype page.
+- 2026-11-18: Logo in top bar. "(required)" on the invite and edit fields, red border on invalid dropdowns, email read-only when editing. Added dialogs, messages and logo to the changes table.
