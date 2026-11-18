@@ -45,7 +45,7 @@ Compared with the current Access management page in DELTA.
 | Delete confirmation | "Are you sure you want to delete this user?" and "This data cannot be recovered after being deleted." | "Delete user", then "[Name] will lose access to DELTA. This cannot be undone." Buttons Cancel and "Delete user" | Names the person being deleted |
 | Messages after an action | Added: "User has been successfully added!" Saved: "Changes saved" Deleted: "User deleted successfully." Resent: "Invitation email sent successfully" | Invited: "Invitation sent to [email]." Saved: "Changes saved for [name]." Deleted: "[Name] was deleted." Resent: "Invitation sent again to [email]." | Messages name who was affected |
 | Resend invitation | Confirmation dialog "Resend invitation email" | Sent directly from the row, followed by the message above | One step instead of two |
-| Logo | Placeholder | DELTA Resilience logo, one line version, 28px high, in the top bar | Brand, kept small |
+| Logo | Placeholder | DELTA Resilience logo, two-line version, 32px high, in the top bar | Brand, kept small |
 
 The columns, the five roles and the add, edit, delete and resend actions exist in both versions.
 
