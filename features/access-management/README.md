@@ -10,7 +10,7 @@ Let administrators invite people to a site and set what they can do on it.
 
 ## Users
 
-- Admins and super admins who manage access for one site.
+- Admins who manage access for one site.
 
 ## Scope
 
@@ -23,7 +23,7 @@ Let administrators invite people to a site and set what they can do on it.
 ## Not in scope
 
 - Real data and sign-in. All users and organizations are example data.
-- Permissions per feature beyond the five roles.
+- Permissions per feature beyond the four roles.
 
 ## Changes from the current version
 
@@ -38,16 +38,26 @@ Compared with the current Access management page in DELTA.
 | User count | "Currently there are N users in the system." | Not shown | To be decided |
 | Role names | Data Viewer, Data Collector, Data Validator | Data viewer, Data collector, Data validator | Sentence case |
 | Add, edit, delete, resend | Each opens as a separate page or overlay with its own address | Invite and edit user and delete confirmation open as dialogs over the list; the list stays in place | Fewer page loads, the user keeps their place in the list |
-| Invite user dialog | Title "Add user" on the page, "Invite User" as button, field labels without a required marker, placeholder "Enter Email" | Title "Invite user", labels carry "(required)", email placeholder "name@organization.org" | Required fields are stated before the user submits |
-| Form errors | Email error only | Error text under each empty or invalid field (email, organization, role), red border on the field, shown on submit and cleared when the user changes the field | Every required field gets feedback |
+| Invite user dialog | Title "Add user" on the page, "Invite User" as button, field labels without a required marker, placeholder "Enter Email" | Title "Invite user", "(required)" on email and role, none on organization, email placeholder "name@organization.org" | Required fields are stated before the user submits |
+| Form errors | Email error only | Error text under each empty or invalid field (email, role), red border on the field, shown on submit and cleared when the user changes the field | Every required field gets feedback |
 | Role description | "You have selected [role]" and "A {role} is able to:" | One line under the role field: "A data collector can ..." | Shorter, same information |
 | Edit user | Email is read-only; page also shows account status, date added and added by | Email is read-only; status and date added are in the list, "added by" is not shown | To be decided |
 | Delete confirmation | "Are you sure you want to delete this user?" and "This data cannot be recovered after being deleted." | "Delete user", then "[Name] will lose access to DELTA. This cannot be undone." Buttons Cancel and "Delete user" | Names the person being deleted |
 | Messages after an action | Added: "User has been successfully added!" Saved: "Changes saved" Deleted: "User deleted successfully." Resent: "Invitation email sent successfully" | Invited: "Invitation sent to [email]." Saved: "Changes saved for [name]." Deleted: "[Name] was deleted." Resent: "Invitation sent again to [email]." | Messages name who was affected |
 | Resend invitation | Confirmation dialog "Resend invitation email" | Sent directly from the row, followed by the message above | One step instead of two |
+| Organization field | Optional, can be cleared | Optional, no "(required)" marker, choose "No organization" to clear. The list shows "-" when empty | Same rule as today, now stated on the field |
+| Closing dialogs | Clicking outside the dialog does not close it (the code does not turn that on; PrimeReact default) | Same. A dialog closes only with Cancel, the close button or Escape | Now a design system rule (DESIGN.md, Dialog dismiss), so nobody loses what they typed |
 | Logo | Placeholder | DELTA Resilience logo, two-line version, 32px high, in the top bar | Brand, kept small |
 
-The columns, the five roles and the add, edit, delete and resend actions exist in both versions.
+The columns, the four roles and the add, edit, delete and resend actions exist in both versions.
+
+## Backend
+
+No changes. Organization is already optional in the current invite form, and the Super admin role is not offered in the country role list.
+
+## Assets
+
+- `assets/`: the DELTA Resilience logo used in the top bar (SVG, two-line version).
 
 ## Checks
 

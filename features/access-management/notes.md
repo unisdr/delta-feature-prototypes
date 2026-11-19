@@ -8,7 +8,7 @@ owner: design
 
 - Add, edit and delete open as dialogs on the list page, not as separate pages (DESIGN.md, dialog use).
 - Status is a dot plus text ("Active", "Invitation pending"). Colour is never the only signal.
-- Roles: Data viewer, Data collector, Data validator, Admin, Super admin. The role filter shows what the selected role can do.
+- Roles: Data viewer, Data collector, Data validator, Admin. Super admin is a global role and is not set from a site. The role filter shows what the selected role can do.
 - Long names and emails are cut off with an ellipsis and shown in full on hover.
 
 ## Interaction decisions
@@ -38,3 +38,6 @@ owner: design
 
 - 2026-11-18: First version of the prototype page.
 - 2026-11-18: Logo in top bar. "(required)" on the invite and edit fields, red border on invalid dropdowns, email read-only when editing. Added dialogs, messages and logo to the changes table.
+- 2026-11-18: Two-line logo in the top bar, logo file added in assets.
+- 2026-11-19: Super admin removed from the roles. Organization is optional. Dialogs no longer close when clicking outside. Toast icon colour is now the token `--good-on-dark` (added to tokens.json in delta-design pull request 1). Added requirements.md.
+- 2026-11-19: Dialogs close only with Cancel, the close button or Escape (not on outside click). Documented in the changes table.
