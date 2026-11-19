@@ -28,3 +28,4 @@ owner: design
 
 - 2026-11-18: First version of the prototype page.
 - 2026-11-19: Dialogs close only with Cancel, the close button or Escape (not on outside click). Documented in the changes table.
+- 2026-11-19: Account menu reduced to Profile and Sign out. Change password and two-step verification are on the profile page.

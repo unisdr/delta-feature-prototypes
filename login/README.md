@@ -34,7 +34,7 @@ Compared with the current log in screens in DELTA.
 | Logo | DELTA written as text | DELTA Resilience logo, two-line version, 48px high, top left (and above the form on mobile) | Brand, same logo as the top bar on the other pages |
 | Instance selection | Dropdown | One list with the Official and Training instances together | Fewer clicks |
 
-The left-hand text is taken from the DELTA landing page. Which side is beige is not confirmed.
+The left-hand text is taken from the DELTA landing page.
 
 ## Backend
 
