@@ -30,3 +30,4 @@ owner: design
 ## Changelog
 
 - 2026-11-18: First version of the prototype page.
+- 2026-11-19: DELTA Resilience logo replaces the DELTA text top left. Logo file added in assets.

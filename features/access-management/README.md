@@ -35,13 +35,13 @@ Compared with the current Access management page in DELTA.
 | Sorting | None | Click a column header to sort | Needed to find the newest or pending users |
 | Rows per page | 10, 20, 30, 40, 50 | 25, 50, 100, default 25 | Design system standard for tables |
 | Status | Status column plus a "Status legend" section | Dot plus text in the status column, no legend | The text carries the meaning, so no legend is needed |
-| User count | "Currently there are N users in the system." | Not shown | To be decided |
+| User count | "Currently there are N users in the system." | Not shown, the pagination already shows the total | Decided |
 | Role names | Data Viewer, Data Collector, Data Validator | Data viewer, Data collector, Data validator | Sentence case |
 | Add, edit, delete, resend | Each opens as a separate page or overlay with its own address | Invite and edit user and delete confirmation open as dialogs over the list; the list stays in place | Fewer page loads, the user keeps their place in the list |
 | Invite user dialog | Title "Add user" on the page, "Invite User" as button, field labels without a required marker, placeholder "Enter Email" | Title "Invite user", "(required)" on email and role, none on organization, email placeholder "name@organization.org" | Required fields are stated before the user submits |
 | Form errors | Email error only | Error text under each empty or invalid field (email, role), red border on the field, shown on submit and cleared when the user changes the field | Every required field gets feedback |
 | Role description | "You have selected [role]" and "A {role} is able to:" | One line under the role field: "A data collector can ..." | Shorter, same information |
-| Edit user | Email is read-only; page also shows account status, date added and added by | Email is read-only; status and date added are in the list, "added by" is not shown | To be decided |
+| Edit user | Email is read-only; page also shows account status, date added and added by | Email is read-only; status, date added and added by are shown as read-only lines at the top of the dialog | Decided, no backend change |
 | Delete confirmation | "Are you sure you want to delete this user?" and "This data cannot be recovered after being deleted." | "Delete user", then "[Name] will lose access to DELTA. This cannot be undone." Buttons Cancel and "Delete user" | Names the person being deleted |
 | Messages after an action | Added: "User has been successfully added!" Saved: "Changes saved" Deleted: "User deleted successfully." Resent: "Invitation email sent successfully" | Invited: "Invitation sent to [email]." Saved: "Changes saved for [name]." Deleted: "[Name] was deleted." Resent: "Invitation sent again to [email]." | Messages name who was affected |
 | Resend invitation | Confirmation dialog "Resend invitation email" | Sent directly from the row, followed by the message above | One step instead of two |
@@ -53,7 +53,12 @@ The columns, the four roles and the add, edit, delete and resend actions exist i
 
 ## Backend
 
-No changes. Organization is already optional in the current invite form, and the Super admin role is not offered in the country role list.
+The prototype needs two changes on the server. Everything else is front end only.
+
+- Search: today the list reads one organization filter and one role filter. The new search box looks in name, email and organization, so the list query needs a search term.
+- Sorting: today the list is paginated on the server and has no order. Sorting applies to the whole list, so the query needs a sort column and direction.
+
+Not backend: rows per page (25, 50, 100), dialogs, messages, labels. Organization is already optional in the current invite form, and the Super admin role is not offered in the country role list.
 
 ## Assets
 

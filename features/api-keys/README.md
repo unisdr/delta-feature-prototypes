@@ -33,13 +33,14 @@ Compared with the current API keys pages in DELTA.
 | Confirmations | A message after the page redirects | Short message that fades out | One pattern across screens |
 | Sorting | None | Click a column header to sort, click again to reverse, arrow on the sorted column | Find the newest or specific rows |
 | Rows per page | 10, 20, 30, 40, 50 | 25, 50, 100, default 25 | Design system standard for tables |
-| Key name | Session Secret | Key. The list shows the first 8 characters with a copy button, as today | Plain language |
+| Key name | Session Secret | Key | Plain language |
+| Key shown in the list | First 5 characters | First 5 characters | No change |
 | Sortable columns | None | Name, managed by, created | Find keys faster |
 | Closing dialogs | Clicking outside the dialog does not close it (the code does not turn that on; PrimeReact default) | Same. A dialog closes only with Cancel, the close button or Escape | Now a design system rule (DESIGN.md, Dialog dismiss), so nobody loses what they typed |
 
 ## Backend
 
-- No changes.
+- No changes. The current page loads all keys and pages and could sort them in the browser, so sorting, the page size and the new column need no server work.
 
 ## Assets
 

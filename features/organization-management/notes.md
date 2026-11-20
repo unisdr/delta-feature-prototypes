@@ -28,3 +28,4 @@ owner: design
 
 - 2026-11-18: First version of the prototype page.
 - 2026-11-19: Dialogs close only with Cancel, the close button or Escape (not on outside click). Documented in the changes table.
+- 2026-11-19: Removed the Spelling row from the changes table. The current code already spells organization with a z.

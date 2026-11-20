@@ -36,7 +36,6 @@ Compared with the current Organization management page in DELTA.
 | Users column | Not shown (the list has a Name column only) | Number of users in each organization | Admins can see which organizations are in use |
 | Delete when users remain | Error appears after trying | The dialog says up front that the organization still has users and what to do | Avoids a failed action |
 | Sortable columns | None | Name and users | Find organizations faster |
-| Spelling | Mixed | Organization, with a z, everywhere | One spelling |
 | Closing dialogs | Clicking outside the dialog does not close it (the code does not turn that on; PrimeReact default) | Same. A dialog closes only with Cancel, the close button or Escape | Now a design system rule (DESIGN.md, Dialog dismiss), so nobody loses what they typed |
 
 ## Backend

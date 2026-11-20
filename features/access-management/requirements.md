@@ -46,7 +46,12 @@ Super admin is a global role and is not set from a site.
 
 ## Backend
 
-No changes.
+The prototype needs two changes on the server. Everything else is front end only.
+
+- Search: today the list reads one organization filter and one role filter. The new search box looks in name, email and organization, so the list query needs a search term.
+- Sorting: today the list is paginated on the server and has no order. Sorting applies to the whole list, so the query needs a sort column and direction.
+
+Not backend: rows per page (25, 50, 100), dialogs, messages, labels. Organization is already optional in the current invite form, and the Super admin role is not offered in the country role list.
 
 ## Open questions
 

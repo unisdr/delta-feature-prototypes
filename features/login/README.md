@@ -31,13 +31,18 @@ Compared with the current log in screens in DELTA.
 |---|---|---|---|
 | Layout | Single centred card on a grey background | Split screen: beige side with the DELTA text on the left, sign in form on an off-white side on the right. On mobile only the form is shown | Matches the design system layout |
 | Screens | Current flow | Same flow, rebuilt from the shared components: Welcome back, Forgot your password, Check your email, Enter your code, Select an instance, Loading instance, Reset your password, Password changed | Consistent with the other screens |
+| Logo | DELTA written as text | DELTA Resilience logo, two-line version, 48px high, top left (and above the form on mobile) | Brand, same logo as the top bar on the other pages |
 | Instance selection | Dropdown | One list with the Official and Training instances together | Fewer clicks |
 
-The left-hand text is taken from the DELTA landing page. Which side is beige and the logo on this screen are not confirmed.
+The left-hand text is taken from the DELTA landing page.
 
 ## Backend
 
 - No changes.
+
+## Assets
+
+- `assets/`: the DELTA Resilience logo (SVG, two-line version).
 
 ## Checks
 

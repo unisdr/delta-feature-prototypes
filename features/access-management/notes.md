@@ -41,3 +41,5 @@ owner: design
 - 2026-11-18: Two-line logo in the top bar, logo file added in assets.
 - 2026-11-19: Super admin removed from the roles. Organization is optional. Dialogs no longer close when clicking outside. Toast icon colour is now the token `--good-on-dark` (added to tokens.json in delta-design pull request 1). Added requirements.md.
 - 2026-11-19: Dialogs close only with Cancel, the close button or Escape (not on outside click). Documented in the changes table.
+- 2026-11-19: Backend section corrected. Search across name, email and organization, and sorting of the whole list need server changes. Earlier text said no backend changes.
+- 2026-11-19: Edit user dialog shows status, date added and added by as read-only lines. User count removed (pagination shows the total).

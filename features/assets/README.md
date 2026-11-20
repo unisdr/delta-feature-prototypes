@@ -41,7 +41,8 @@ Compared with the current Assets pages in DELTA.
 
 ## Backend
 
-- No changes.
+- Sorting applies to the whole list. The list query is paginated on the server and always sorted by name, so it needs a sort column and direction.
+- Category column: the list query returns the custom category but not the built-in category, so it needs to return both.
 
 ## Assets
 
